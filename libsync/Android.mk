@@ -17,4 +17,7 @@ LOCAL_MODULE_TAGS := optional tests
 LOCAL_SHARED_LIBRARIES := liblog
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/include
 LOCAL_CFLAGS := -Werror
+ifneq ($(DEBUG_FORCE_STRICT_ALIASING),true)
+LOCAL_CFLAGS += -fno-strict-aliasing
+endif
 include $(BUILD_EXECUTABLE)

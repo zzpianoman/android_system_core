@@ -25,6 +25,9 @@ LOCAL_SRC_FILES := $(commonSources)
 LOCAL_MODULE := libdiskconfig
 LOCAL_MODULE_TAGS := optional
 #LOCAL_STATIC_LIBRARIES := libcutils liblog libc
+ifneq ($(DEBUG_FORCE_STRICT_ALIASING),true)
+	LOCAL_CFLAGS := -fno-strict-aliasing
+endif
 include $(BUILD_STATIC_LIBRARY)
 
 ifeq ($(HOST_OS),linux)
